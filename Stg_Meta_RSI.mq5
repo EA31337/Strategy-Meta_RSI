@@ -32,7 +32,7 @@ input ENUM_LOG_LEVEL Log_Level = V_INFO;  // Log level.
 input bool Info_On_Chart = true;          // Display info on chart.
 
 // Includes strategy class.
-#include "Stg_Meta_Trend.mqh"
+#include "Stg_Meta_RSI.mqh"
 
 // Defines.
 #define ea_name "Strategy Meta Trend"

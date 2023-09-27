@@ -1,71 +1,71 @@
 /**
  * @file
- * Implements Trend meta strategy.
+ * Implements RSI meta strategy.
  */
 
 // Prevents processing this includes file multiple times.
-#ifndef STG_META_TREND_MQH
-#define STG_META_TREND_MQH
+#ifndef STG_META_RSI_MQH
+#define STG_META_RSI_MQH
 
 // User input params.
-INPUT2_GROUP("Meta Trend strategy: main params");
-INPUT2 ENUM_STRATEGY Meta_Trend_Strategy = STRAT_STOCHASTIC;  // Strategy to filter by trend
-INPUT2_GROUP("Meta Trend strategy: common params");
-INPUT2 float Meta_Trend_LotSize = 0;                // Lot size
-INPUT2 int Meta_Trend_SignalOpenMethod = 0;         // Signal open method
-INPUT2 float Meta_Trend_SignalOpenLevel = 0;        // Signal open level
-INPUT2 int Meta_Trend_SignalOpenFilterMethod = 32;  // Signal open filter method
-INPUT2 int Meta_Trend_SignalOpenFilterTime = 3;     // Signal open filter time (0-31)
-INPUT2 int Meta_Trend_SignalOpenBoostMethod = 0;    // Signal open boost method
-INPUT2 int Meta_Trend_SignalCloseMethod = 0;        // Signal close method
-INPUT2 int Meta_Trend_SignalCloseFilter = 32;       // Signal close filter (-127-127)
-INPUT2 float Meta_Trend_SignalCloseLevel = 0;       // Signal close level
-INPUT2 int Meta_Trend_PriceStopMethod = 0;          // Price limit method
-INPUT2 float Meta_Trend_PriceStopLevel = 2;         // Price limit level
-INPUT2 int Meta_Trend_TickFilterMethod = 32;        // Tick filter method (0-255)
-INPUT2 float Meta_Trend_MaxSpread = 4.0;            // Max spread to trade (in pips)
-INPUT2 short Meta_Trend_Shift = 0;                  // Shift
-INPUT2 float Meta_Trend_OrderCloseLoss = 200;       // Order close loss
-INPUT2 float Meta_Trend_OrderCloseProfit = 200;     // Order close profit
-INPUT2 int Meta_Trend_OrderCloseTime = 2880;        // Order close time in mins (>0) or bars (<0)
-INPUT_GROUP("Meta Trend strategy: RSI oscillator params");
-INPUT int Meta_Trend_RSI_Period = 16;                                    // Period
-INPUT ENUM_APPLIED_PRICE Meta_Trend_RSI_Applied_Price = PRICE_WEIGHTED;  // Applied Price
-INPUT int Meta_Trend_RSI_Shift = 0;                                      // Shift
-INPUT ENUM_IDATA_SOURCE_TYPE Meta_Trend_RSI_SourceType = IDATA_BUILTIN;  // Source type
+INPUT2_GROUP("Meta RSI strategy: main params");
+INPUT2 ENUM_STRATEGY Meta_RSI_Strategy = STRAT_STOCHASTIC;  // Strategy to filter by rsi
+INPUT2_GROUP("Meta RSI strategy: common params");
+INPUT2 float Meta_RSI_LotSize = 0;                // Lot size
+INPUT2 int Meta_RSI_SignalOpenMethod = 0;         // Signal open method
+INPUT2 float Meta_RSI_SignalOpenLevel = 0;        // Signal open level
+INPUT2 int Meta_RSI_SignalOpenFilterMethod = 32;  // Signal open filter method
+INPUT2 int Meta_RSI_SignalOpenFilterTime = 3;     // Signal open filter time (0-31)
+INPUT2 int Meta_RSI_SignalOpenBoostMethod = 0;    // Signal open boost method
+INPUT2 int Meta_RSI_SignalCloseMethod = 0;        // Signal close method
+INPUT2 int Meta_RSI_SignalCloseFilter = 32;       // Signal close filter (-127-127)
+INPUT2 float Meta_RSI_SignalCloseLevel = 0;       // Signal close level
+INPUT2 int Meta_RSI_PriceStopMethod = 0;          // Price limit method
+INPUT2 float Meta_RSI_PriceStopLevel = 2;         // Price limit level
+INPUT2 int Meta_RSI_TickFilterMethod = 32;        // Tick filter method (0-255)
+INPUT2 float Meta_RSI_MaxSpread = 4.0;            // Max spread to trade (in pips)
+INPUT2 short Meta_RSI_Shift = 0;                  // Shift
+INPUT2 float Meta_RSI_OrderCloseLoss = 200;       // Order close loss
+INPUT2 float Meta_RSI_OrderCloseProfit = 200;     // Order close profit
+INPUT2 int Meta_RSI_OrderCloseTime = 2880;        // Order close time in mins (>0) or bars (<0)
+INPUT_GROUP("Meta RSI strategy: RSI oscillator params");
+INPUT int Meta_RSI_RSI_Period = 16;                                    // Period
+INPUT ENUM_APPLIED_PRICE Meta_RSI_RSI_Applied_Price = PRICE_WEIGHTED;  // Applied Price
+INPUT int Meta_RSI_RSI_Shift = 0;                                      // Shift
+INPUT ENUM_IDATA_SOURCE_TYPE Meta_RSI_RSI_SourceType = IDATA_BUILTIN;  // Source type
 
 // Structs.
 // Defines struct with default user strategy values.
-struct Stg_Meta_Trend_Params_Defaults : StgParams {
-  Stg_Meta_Trend_Params_Defaults()
-      : StgParams(::Meta_Trend_SignalOpenMethod, ::Meta_Trend_SignalOpenFilterMethod, ::Meta_Trend_SignalOpenLevel,
-                  ::Meta_Trend_SignalOpenBoostMethod, ::Meta_Trend_SignalCloseMethod, ::Meta_Trend_SignalCloseFilter,
-                  ::Meta_Trend_SignalCloseLevel, ::Meta_Trend_PriceStopMethod, ::Meta_Trend_PriceStopLevel,
-                  ::Meta_Trend_TickFilterMethod, ::Meta_Trend_MaxSpread, ::Meta_Trend_Shift) {
-    Set(STRAT_PARAM_LS, ::Meta_Trend_LotSize);
-    Set(STRAT_PARAM_OCL, ::Meta_Trend_OrderCloseLoss);
-    Set(STRAT_PARAM_OCP, ::Meta_Trend_OrderCloseProfit);
-    Set(STRAT_PARAM_OCT, ::Meta_Trend_OrderCloseTime);
-    Set(STRAT_PARAM_SOFT, ::Meta_Trend_SignalOpenFilterTime);
+struct Stg_Meta_RSI_Params_Defaults : StgParams {
+  Stg_Meta_RSI_Params_Defaults()
+      : StgParams(::Meta_RSI_SignalOpenMethod, ::Meta_RSI_SignalOpenFilterMethod, ::Meta_RSI_SignalOpenLevel,
+                  ::Meta_RSI_SignalOpenBoostMethod, ::Meta_RSI_SignalCloseMethod, ::Meta_RSI_SignalCloseFilter,
+                  ::Meta_RSI_SignalCloseLevel, ::Meta_RSI_PriceStopMethod, ::Meta_RSI_PriceStopLevel,
+                  ::Meta_RSI_TickFilterMethod, ::Meta_RSI_MaxSpread, ::Meta_RSI_Shift) {
+    Set(STRAT_PARAM_LS, ::Meta_RSI_LotSize);
+    Set(STRAT_PARAM_OCL, ::Meta_RSI_OrderCloseLoss);
+    Set(STRAT_PARAM_OCP, ::Meta_RSI_OrderCloseProfit);
+    Set(STRAT_PARAM_OCT, ::Meta_RSI_OrderCloseTime);
+    Set(STRAT_PARAM_SOFT, ::Meta_RSI_SignalOpenFilterTime);
   }
 };
 
-class Stg_Meta_Trend : public Strategy {
+class Stg_Meta_RSI : public Strategy {
  protected:
   Ref<Strategy> strat;
 
  public:
-  Stg_Meta_Trend(StgParams &_sparams, TradeParams &_tparams, ChartParams &_cparams, string _name = "")
+  Stg_Meta_RSI(StgParams &_sparams, TradeParams &_tparams, ChartParams &_cparams, string _name = "")
       : Strategy(_sparams, _tparams, _cparams, _name) {}
 
-  static Stg_Meta_Trend *Init(ENUM_TIMEFRAMES _tf = NULL, EA *_ea = NULL) {
+  static Stg_Meta_RSI *Init(ENUM_TIMEFRAMES _tf = NULL, EA *_ea = NULL) {
     // Initialize strategy initial values.
-    Stg_Meta_Trend_Params_Defaults stg_trend_defaults;
-    StgParams _stg_params(stg_trend_defaults);
+    Stg_Meta_RSI_Params_Defaults stg_rsi_defaults;
+    StgParams _stg_params(stg_rsi_defaults);
     // Initialize Strategy instance.
     ChartParams _cparams(_tf, _Symbol);
     TradeParams _tparams;
-    Strategy *_strat = new Stg_Meta_Trend(_stg_params, _tparams, _cparams, "(Meta) Trend");
+    Strategy *_strat = new Stg_Meta_RSI(_stg_params, _tparams, _cparams, "(Meta) RSI");
     return _strat;
   }
 
@@ -73,11 +73,11 @@ class Stg_Meta_Trend : public Strategy {
    * Event on strategy's init.
    */
   void OnInit() {
-    SetStrategy(Meta_Trend_Strategy);
+    SetStrategy(Meta_RSI_Strategy);
     // Initialize indicators.
     {
-      IndiRSIParams _indi_params(::Meta_Trend_RSI_Period, ::Meta_Trend_RSI_Applied_Price, ::Meta_Trend_RSI_Shift);
-      _indi_params.SetDataSourceType(::Meta_Trend_RSI_SourceType);
+      IndiRSIParams _indi_params(::Meta_RSI_RSI_Period, ::Meta_RSI_RSI_Applied_Price, ::Meta_RSI_RSI_Shift);
+      _indi_params.SetDataSourceType(::Meta_RSI_RSI_SourceType);
       _indi_params.SetTf(PERIOD_D1);
       SetIndicator(new Indi_RSI(_indi_params));
     }
@@ -336,4 +336,4 @@ class Stg_Meta_Trend : public Strategy {
   }
 };
 
-#endif  // STG_META_TREND_MQH
+#endif  // STG_META_RSI_MQH

@@ -12,24 +12,24 @@ INPUT2_GROUP("Meta RSI strategy: main params");
 INPUT2 ENUM_STRATEGY Meta_RSI_Strategy_RSI_Neutral = STRAT_BANDS;  // Strategy for RSI at neutral range (40-60)
 INPUT2 ENUM_STRATEGY Meta_RSI_Strategy_RSI_Peak = STRAT_FORCE;     // Strategy for RSI at peak range (0-20,80-100)
 INPUT2 ENUM_STRATEGY Meta_RSI_Strategy_RSI_Trend = STRAT_AC;       // Strategy for RSI at trend range (20-40,60-80)
-INPUT2_GROUP("Meta RSI strategy: common params");
-INPUT2 float Meta_RSI_LotSize = 0;                // Lot size
-INPUT2 int Meta_RSI_SignalOpenMethod = 0;         // Signal open method
-INPUT2 float Meta_RSI_SignalOpenLevel = 0;        // Signal open level
-INPUT2 int Meta_RSI_SignalOpenFilterMethod = 32;  // Signal open filter method
-INPUT2 int Meta_RSI_SignalOpenFilterTime = 3;     // Signal open filter time (0-31)
-INPUT2 int Meta_RSI_SignalOpenBoostMethod = 0;    // Signal open boost method
-INPUT2 int Meta_RSI_SignalCloseMethod = 0;        // Signal close method
-INPUT2 int Meta_RSI_SignalCloseFilter = 32;       // Signal close filter (-127-127)
-INPUT2 float Meta_RSI_SignalCloseLevel = 0;       // Signal close level
-INPUT2 int Meta_RSI_PriceStopMethod = 0;          // Price limit method
-INPUT2 float Meta_RSI_PriceStopLevel = 2;         // Price limit level
-INPUT2 int Meta_RSI_TickFilterMethod = 32;        // Tick filter method (0-255)
-INPUT2 float Meta_RSI_MaxSpread = 4.0;            // Max spread to trade (in pips)
-INPUT2 short Meta_RSI_Shift = 0;                  // Shift
-INPUT2 float Meta_RSI_OrderCloseLoss = 200;       // Order close loss
-INPUT2 float Meta_RSI_OrderCloseProfit = 200;     // Order close profit
-INPUT2 int Meta_RSI_OrderCloseTime = 2880;        // Order close time in mins (>0) or bars (<0)
+INPUT3_GROUP("Meta RSI strategy: common params");
+INPUT3 float Meta_RSI_LotSize = 0;                // Lot size
+INPUT3 int Meta_RSI_SignalOpenMethod = 0;         // Signal open method
+INPUT3 float Meta_RSI_SignalOpenLevel = 0;        // Signal open level
+INPUT3 int Meta_RSI_SignalOpenFilterMethod = 32;  // Signal open filter method
+INPUT3 int Meta_RSI_SignalOpenFilterTime = 3;     // Signal open filter time (0-31)
+INPUT3 int Meta_RSI_SignalOpenBoostMethod = 0;    // Signal open boost method
+INPUT3 int Meta_RSI_SignalCloseMethod = 0;        // Signal close method
+INPUT3 int Meta_RSI_SignalCloseFilter = 32;       // Signal close filter (-127-127)
+INPUT3 float Meta_RSI_SignalCloseLevel = 0;       // Signal close level
+INPUT3 int Meta_RSI_PriceStopMethod = 0;          // Price limit method
+INPUT3 float Meta_RSI_PriceStopLevel = 2;         // Price limit level
+INPUT3 int Meta_RSI_TickFilterMethod = 32;        // Tick filter method (0-255)
+INPUT3 float Meta_RSI_MaxSpread = 4.0;            // Max spread to trade (in pips)
+INPUT3 short Meta_RSI_Shift = 0;                  // Shift
+INPUT3 float Meta_RSI_OrderCloseLoss = 200;       // Order close loss
+INPUT3 float Meta_RSI_OrderCloseProfit = 200;     // Order close profit
+INPUT3 int Meta_RSI_OrderCloseTime = 2880;        // Order close time in mins (>0) or bars (<0)
 INPUT_GROUP("Meta RSI strategy: RSI oscillator params");
 INPUT int Meta_RSI_RSI_Period = 14;                                    // Period
 INPUT ENUM_APPLIED_PRICE Meta_RSI_RSI_Applied_Price = PRICE_TYPICAL;   // Applied Price

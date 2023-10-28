@@ -90,205 +90,21 @@ class Stg_Meta_RSI : public Strategy {
   /**
    * Sets strategy.
    */
-  bool StrategyAdd(ENUM_STRATEGY _sid, long _index) {
-    bool _result = true;
-    long _magic_no = Get<long>(STRAT_PARAM_ID);
+  bool StrategyAdd(ENUM_STRATEGY _sid, long _index = -1) {
     ENUM_TIMEFRAMES _tf = Get<ENUM_TIMEFRAMES>(STRAT_PARAM_TF);
-
-    switch (_sid) {
-      case STRAT_NONE:
-        break;
-      case STRAT_AC:
-        _result &= StrategyAdd<Stg_AC>(_tf, _magic_no, _sid, _index);
-        break;
-      case STRAT_AD:
-        _result &= StrategyAdd<Stg_AD>(_tf, _magic_no, _sid, _index);
-        break;
-      case STRAT_ADX:
-        _result &= StrategyAdd<Stg_ADX>(_tf, _magic_no, _sid, _index);
-        break;
-      case STRAT_AMA:
-        _result &= StrategyAdd<Stg_AMA>(_tf, _magic_no, _sid, _index);
-        break;
-      case STRAT_ARROWS:
-        _result &= StrategyAdd<Stg_Arrows>(_tf, _magic_no, _sid, _index);
-        break;
-      case STRAT_ASI:
-        _result &= StrategyAdd<Stg_ASI>(_tf, _magic_no, _sid, _index);
-        break;
-      case STRAT_ATR:
-        _result &= StrategyAdd<Stg_ATR>(_tf, _magic_no, _sid, _index);
-        break;
-      case STRAT_ALLIGATOR:
-        _result &= StrategyAdd<Stg_Alligator>(_tf, _magic_no, _sid, _index);
-        break;
-      case STRAT_AWESOME:
-        _result &= StrategyAdd<Stg_Awesome>(_tf, _magic_no, _sid, _index);
-        break;
-      case STRAT_BWMFI:
-        _result &= StrategyAdd<Stg_BWMFI>(_tf, _magic_no, _sid, _index);
-        break;
-      case STRAT_BANDS:
-        _result &= StrategyAdd<Stg_Bands>(_tf, _magic_no, _sid, _index);
-        break;
-      case STRAT_BEARS_POWER:
-        _result &= StrategyAdd<Stg_BearsPower>(_tf, _magic_no, _sid, _index);
-        break;
-      case STRAT_BULLS_POWER:
-        _result &= StrategyAdd<Stg_BullsPower>(_tf, _magic_no, _sid, _index);
-        break;
-      case STRAT_CCI:
-        _result &= StrategyAdd<Stg_CCI>(_tf, _magic_no, _sid, _index);
-        break;
-      case STRAT_CHAIKIN:
-        _result &= StrategyAdd<Stg_Chaikin>(_tf, _magic_no, _sid, _index);
-        break;
-      case STRAT_DEMA:
-        _result &= StrategyAdd<Stg_DEMA>(_tf, _magic_no, _sid, _index);
-        break;
-      case STRAT_DPO:
-        _result &= StrategyAdd<Stg_DPO>(_tf, _magic_no, _sid, _index);
-        break;
-      case STRAT_DEMARKER:
-        _result &= StrategyAdd<Stg_DeMarker>(_tf, _magic_no, _sid, _index);
-        break;
-      case STRAT_ENVELOPES:
-        _result &= StrategyAdd<Stg_Envelopes>(_tf, _magic_no, _sid, _index);
-        break;
-      case STRAT_FORCE:
-        _result &= StrategyAdd<Stg_Force>(_tf, _magic_no, _sid, _index);
-        break;
-      case STRAT_FRACTALS:
-        _result &= StrategyAdd<Stg_Fractals>(_tf, _magic_no, _sid, _index);
-        break;
-      case STRAT_GATOR:
-        _result &= StrategyAdd<Stg_Gator>(_tf, _magic_no, _sid, _index);
-        break;
-      case STRAT_HEIKEN_ASHI:
-        _result &= StrategyAdd<Stg_HeikenAshi>(_tf, _magic_no, _sid, _index);
-        break;
-      case STRAT_ICHIMOKU:
-        _result &= StrategyAdd<Stg_Ichimoku>(_tf, _magic_no, _sid, _index);
-        break;
-      case STRAT_INDICATOR:
-        _result &= StrategyAdd<Stg_Indicator>(_tf, _magic_no, _sid, _index);
-        break;
-      case STRAT_MA:
-        _result &= StrategyAdd<Stg_MA>(_tf, _magic_no, _sid, _index);
-        break;
-      case STRAT_MA_BREAKOUT:
-        _result &= StrategyAdd<Stg_MA_Breakout>(_tf, _magic_no, _sid, _index);
-        break;
-      case STRAT_MA_CROSS_PIVOT:
-        _result &= StrategyAdd<Stg_MA_Cross_Pivot>(_tf, _magic_no, _sid, _index);
-        break;
-      case STRAT_MA_CROSS_SHIFT:
-        _result &= StrategyAdd<Stg_MA_Cross_Shift>(_tf, _magic_no, _sid, _index);
-        break;
-      case STRAT_MA_CROSS_SUP_RES:
-        _result &= StrategyAdd<Stg_MA_Cross_Sup_Res>(_tf, _magic_no, _sid, _index);
-        break;
-      case STRAT_MA_TREND:
-        _result &= StrategyAdd<Stg_MA_Trend>(_tf, _magic_no, _sid, _index);
-        break;
-      case STRAT_MACD:
-        _result &= StrategyAdd<Stg_MACD>(_tf, _magic_no, _sid, _index);
-        break;
-      case STRAT_MFI:
-        _result &= StrategyAdd<Stg_MFI>(_tf, _magic_no, _sid, _index);
-        break;
-      case STRAT_MOMENTUM:
-        _result &= StrategyAdd<Stg_Momentum>(_tf, _magic_no, _sid, _index);
-        break;
-      case STRAT_OBV:
-        _result &= StrategyAdd<Stg_OBV>(_tf, _magic_no, _sid, _index);
-        break;
-      case STRAT_OSCILLATOR:
-        _result &= StrategyAdd<Stg_Oscillator>(_tf, _magic_no, _sid, _index);
-        break;
-      case STRAT_OSCILLATOR_DIVERGENCE:
-        _result &= StrategyAdd<Stg_Oscillator_Divergence>(_tf, _magic_no, _sid, _index);
-        break;
-      case STRAT_OSCILLATOR_MULTI:
-        _result &= StrategyAdd<Stg_Oscillator_Multi>(_tf, _magic_no, _sid, _index);
-        break;
-      case STRAT_OSCILLATOR_CROSS:
-        _result &= StrategyAdd<Stg_Oscillator_Cross>(_tf, _magic_no, _sid, _index);
-        break;
-      case STRAT_OSCILLATOR_CROSS_SHIFT:
-        _result &= StrategyAdd<Stg_Oscillator_Cross_Shift>(_tf, _magic_no, _sid, _index);
-        break;
-      case STRAT_OSCILLATOR_CROSS_ZERO:
-        _result &= StrategyAdd<Stg_Oscillator_Cross_Zero>(_tf, _magic_no, _sid, _index);
-        break;
-      case STRAT_OSCILLATOR_RANGE:
-        _result &= StrategyAdd<Stg_Oscillator_Range>(_tf, _magic_no, _sid, _index);
-        break;
-      case STRAT_OSCILLATOR_TREND:
-        _result &= StrategyAdd<Stg_Oscillator_Trend>(_tf, _magic_no, _sid, _index);
-        break;
-      case STRAT_OSMA:
-        _result &= StrategyAdd<Stg_OsMA>(_tf, _magic_no, _sid, _index);
-        break;
-      case STRAT_PATTERN:
-        _result &= StrategyAdd<Stg_Pattern>(_tf, _magic_no, _sid, _index);
-        break;
-      case STRAT_PINBAR:
-        _result &= StrategyAdd<Stg_Pinbar>(_tf, _magic_no, _sid, _index);
-        break;
-      case STRAT_PIVOT:
-        _result &= StrategyAdd<Stg_Pivot>(_tf, _magic_no, _sid, _index);
-        break;
-      case STRAT_RSI:
-        _result &= StrategyAdd<Stg_RSI>(_tf, _magic_no, _sid, _index);
-        break;
-      case STRAT_RVI:
-        _result &= StrategyAdd<Stg_RVI>(_tf, _magic_no, _sid, _index);
-        break;
-      case STRAT_SAR:
-        _result &= StrategyAdd<Stg_SAR>(_tf, _magic_no, _sid, _index);
-        break;
-      case STRAT_STDDEV:
-        _result &= StrategyAdd<Stg_StdDev>(_tf, _magic_no, _sid, _index);
-        break;
-      case STRAT_STOCHASTIC:
-        _result &= StrategyAdd<Stg_Stochastic>(_tf, _magic_no, _sid, _index);
-        break;
-      case STRAT_WPR:
-        _result &= StrategyAdd<Stg_WPR>(_tf, _magic_no, _sid, _index);
-        break;
-      case STRAT_ZIGZAG:
-        _result &= StrategyAdd<Stg_ZigZag>(_tf, _magic_no, _sid, _index);
-        break;
-      default:
-        logger.Warning(StringFormat("Unknown strategy: %d", _sid), __FUNCTION_LINE__, GetName());
-        break;
+    Ref<Strategy> _strat = StrategiesManager::StrategyInitByEnum(_sid, _tf);
+    if (_strat.IsSet()) {
+      _strat.Ptr().Set<long>(STRAT_PARAM_ID, Get<long>(STRAT_PARAM_ID));
+      _strat.Ptr().Set<ENUM_TIMEFRAMES>(STRAT_PARAM_TF, _tf);
+      _strat.Ptr().Set<int>(STRAT_PARAM_TYPE, _sid);
+      _strat.Ptr().OnInit();
+      if (_index >= 0) {
+        strats.Set(_index, _strat);
+      } else {
+        strats.Push(_strat);
+      }
     }
-
-    return _result;
-  }
-
-  /**
-   * Adds strategy to specific timeframe.
-   *
-   * @param
-   *   _tf - timeframe to add the strategy.
-   *   _magic_no - unique order identified
-   *
-   * @return
-   *   Returns true if the strategy has been initialized correctly, otherwise false.
-   */
-  template <typename SClass>
-  bool StrategyAdd(ENUM_TIMEFRAMES _tf, long _magic_no = 0, int _type = 0, long _index = 0) {
-    bool _result = true;
-    _magic_no = _magic_no > 0 ? _magic_no : rand();
-    Ref<Strategy> _strat = ((SClass *)NULL).Init(_tf);
-    _strat.Ptr().Set<long>(STRAT_PARAM_ID, _magic_no);
-    _strat.Ptr().Set<ENUM_TIMEFRAMES>(STRAT_PARAM_TF, _tf);
-    _strat.Ptr().Set<int>(STRAT_PARAM_TYPE, _type);
-    _strat.Ptr().OnInit();
-    strats.Set(_index, _strat);
-    return _result;
+    return _strat.IsSet();
   }
 
   /**

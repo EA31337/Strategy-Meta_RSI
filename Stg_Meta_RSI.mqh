@@ -9,9 +9,9 @@
 
 // User input params.
 INPUT2_GROUP("Meta RSI strategy: main params");
-INPUT2 ENUM_STRATEGY Meta_RSI_Strategy_RSI_Neutral = STRAT_BANDS;  // Strategy for RSI at neutral range (40-60)
-INPUT2 ENUM_STRATEGY Meta_RSI_Strategy_RSI_Peak = STRAT_FORCE;     // Strategy for RSI at peak range (0-20,80-100)
-INPUT2 ENUM_STRATEGY Meta_RSI_Strategy_RSI_Trend = STRAT_AC;       // Strategy for RSI at trend range (20-40,60-80)
+INPUT2 ENUM_STRATEGY Meta_RSI_Strategy_RSI_Neutral = STRAT_CHAIKIN;  // Strategy for RSI at neutral range (40-60)
+INPUT2 ENUM_STRATEGY Meta_RSI_Strategy_RSI_Peak = STRAT_DPO;         // Strategy for RSI at peak range (0-20,80-100)
+INPUT2 ENUM_STRATEGY Meta_RSI_Strategy_RSI_Trend = STRAT_AWESOME;    // Strategy for RSI at trend range (20-40,60-80)
 INPUT3_GROUP("Meta RSI strategy: common params");
 INPUT3 float Meta_RSI_LotSize = 0;                // Lot size
 INPUT3 int Meta_RSI_SignalOpenMethod = 0;         // Signal open method

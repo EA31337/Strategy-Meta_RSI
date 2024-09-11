@@ -102,7 +102,7 @@ class Stg_Meta_RSI : public Strategy {
       _strat.Ptr().Set<long>(STRAT_PARAM_ID, Get<long>(STRAT_PARAM_ID));
       _strat.Ptr().Set<ENUM_TIMEFRAMES>(STRAT_PARAM_TF, _tf);
       _strat.Ptr().Set<int>(STRAT_PARAM_TYPE, _sid);
-      _strat.Ptr().OnInit();
+      _strat.Ptr().Init();
       if (_index >= 0) {
         strats.Set(_index, _strat);
       } else {
